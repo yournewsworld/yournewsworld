@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthNewsWorld - Breaking Health News & Wellness Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --health-blue: #3b82f6;
+            --health-green: #10b981;
+            --health-purple: #8b5cf6;
+            --health-pink: #ec4899;
+            --border: #e2e8f0;
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+            --gradient: linear-gradient(135deg, #0ea5e9, #3b82f6);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--dark), #334155);
+            color: white;
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(to right, var(--primary), var(--health-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .health-alert {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--health-pink);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            width: 200px;
+        }
+        
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Health Alert Banner */
+        .alert-banner {
+            background-color: #fef3c7;
+            color: #92400e;
+            padding: 12px 0;
+            text-align: center;
+            border-bottom: 1px solid #fbbf24;
+        }
+        
+        .alert-banner i {
+            margin-right: 10px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 30px 0;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+        
+        .main-story {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .main-story img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .main-story-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 30px;
+        }
+        
+        .main-story h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .main-story p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .story-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .health-tips {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .health-tips h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tip-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .tip-item:last-child {
+            border-bottom: none;
+        }
+        
+        .tip-icon {
+            background-color: var(--health-green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .tip-content h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .tip-content p {
+            font-size: 0.9rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        /* Health Categories */
+        .categories {
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .categories h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .category-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* COVID-19 Stats */
+        .covid-stats {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        
+        .stat-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border-top: 5px solid var(--health-blue);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card.cases {
+            border-top-color: var(--health-blue);
+        }
+        
+        .stat-card.recovered {
+            border-top-color: var(--health-green);
+        }
+        
+        .stat-card.deaths {
+            border-top-color: #ef4444;
+        }
+        
+        .stat-card.vaccinated {
+            border-top-color: var(--accent);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .news-card-content {
+            padding: 20px;
+        }
+        
+        .news-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .news-card p {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        .news-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--dark);
+        }
+        
+        .health-tag {
+            background-color: var(--health-green);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+        
+        .sidebar h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            color: var(--dark);
+        }
+        
+        .wellness-tracker {
+            margin-bottom: 30px;
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .tracker-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .tracker-item:last-child {
+            border-bottom: none;
+        }
+        
+        .tracker-label {
+            font-weight: 600;
+        }
+        
+        .tracker-value {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .tracker-progress {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--health-green);
+            border-radius: 4px;
+        }
+        
+        .doctor-consultation {
+            background: var(--gradient);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 25px;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .doctor-consultation h3 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 15px;
+        }
+        
+        .doctor-consultation p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .consult-btn {
+            background-color: white;
+            color: var(--primary);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .consult-btn:hover {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #3c4043;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-bottom nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-bar {
+                width: 180px;
+            }
+            
+            .main-story h2 {
+                font-size: 1.8rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .health-alert span {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-top {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .category-buttons {
+                justify-content: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-story-content {
+                padding: 20px;
+            }
+            
+            .main-story h2 {
+                font-size: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-heartbeat logo-icon"></i>
+                    <h1>HealthNewsWorld</h1>
+                </div>
+                <div class="health-alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>HEALTH ALERT: New Study on Heart Health</span>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Medical News</a></li>
+                        <li><a href="#">Wellness</a></li>
+                        <li><a href="#">Nutrition</a></li>
+                        <li><a href="#">Mental Health</a></li>
+                        <li><a href="#">Fitness</a></li>
+                        <li><a href="#">COVID-19</a></li>
+                        <li><a href="#">Research</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search health topics...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Health Alert Banner -->
+    <div class="alert-banner">
+        <div class="container">
+            <i class="fas fa-info-circle"></i>
+            <strong>Health Advisory:</strong> New recommendations for COVID-19 booster shots have been released by the CDC. 
+            <a href="#" style="color: #92400e; text-decoration: underline; margin-left: 10px;">Learn more</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="main-story">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Medical Research">
+                    <div class="main-story-content">
+                        <h2>Breakthrough in Cancer Treatment: New Therapy Shows 80% Success Rate</h2>
+                        <p>Researchers announce promising results from clinical trials of a novel immunotherapy approach for treating advanced cancers.</p>
+                        <div class="story-meta">
+                            <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            <span><i class="far fa-user"></i> By Dr. Sarah Chen</span>
+                            <span><i class="far fa-eye"></i> 35.2K views</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="health-tips">
+                    <h3><i class="fas fa-lightbulb"></i> Daily Health Tips</h3>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Eat More Fiber</h4>
+                            <p>Increase your daily fiber intake to improve digestion and heart health.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Sleep 7-8 Hours</h4>
+                            <p>Adequate sleep is crucial for immune function and mental health.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Walk 30 Minutes Daily</h4>
+                            <p>Regular walking reduces risk of chronic diseases and improves mood.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Stay Hydrated</h4>
+                            <p>Drink at least 8 glasses of water daily for optimal body function.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>Health Categories</h2>
+            <div class="category-buttons">
+                <button class="category-btn active">
+                    <i class="fas fa-stethoscope"></i> All Health
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-brain"></i> Mental Health
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-heart"></i> Heart Health
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-weight"></i> Nutrition
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-running"></i> Fitness
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-baby"></i> Pediatrics
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-user-md"></i> Medical Research
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-capsules"></i> Pharmaceuticals
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- COVID-19 Stats -->
+    <section class="covid-stats">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-virus"></i> COVID-19 Statistics</h2>
+                <a href="#" class="view-all">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card cases">
+                    <div class="stat-number">642M</div>
+                    <div class="stat-label">Total Cases</div>
+                    <div class="stat-trend">+0.2% from last week</div>
+                </div>
+                
+                <div class="stat-card recovered">
+                    <div class="stat-number">618M</div>
+                    <div class="stat-label">Recovered</div>
+                    <div class="stat-trend">96.3% recovery rate</div>
+                </div>
+                
+                <div class="stat-card deaths">
+                    <div class="stat-number">6.6M</div>
+                    <div class="stat-label">Deaths</div>
+                    <div class="stat-trend">-0.1% from last week</div>
+                </div>
+                
+                <div class="stat-card vaccinated">
+                    <div class="stat-number">13.1B</div>
+                    <div class="stat-label">Vaccine Doses</div>
+                    <div class="stat-trend">68.7% fully vaccinated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content with Sidebar -->
+    <div class="container content-with-sidebar">
+        <!-- News Grid -->
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Mental Health">
+                <div class="news-card-content">
+                    <span class="health-tag">Mental Health</span>
+                    <h3>New Study Links Mindfulness to Reduced Anxiety</h3>
+                    <p>Research shows that daily mindfulness practice can reduce anxiety symptoms by up to 40% in clinical trials.</p>
+                    <div class="news-card-footer">
+                        <span><i class="far fa-clock"></i> 6 hours ago</span>
+                        <span><i class="far fa-comment"></i> 87 comments</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1153&q=80" alt="Nutrition">
+                <div class="news-card-content">
+                    <span class="health-tag" style="background-color: var(--health-pink);">Nutrition</span>
+                    <h3>Mediterranean Diet Shown to Improve Heart Health</h3>
+                    <p>A 10-year study confirms significant cardiovascular benefits from following a Mediterranean-style diet.</p>
+                    <div class="news-card-footer">
+                        <span><i class="far fa-clock"></i> 8 hours ago</span>
+                        <span><i class="far fa-comment"></i> 142 comments</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Fitness">
+                <div class="news-card-content">
+                    <span class="health-tag" style="background-color: var(--health-blue);">Fitness</span>
+                    <h3>Optimal Exercise Duration for Longevity Identified</h3>
+                    <p>New research suggests 150-300 minutes of moderate exercise weekly provides maximum longevity benefits.</p>
+                    <div class="news-card-footer">
+                        <span><i class="far fa-clock"></i> 10 hours ago</span>
+                        <span><i class="far fa-comment"></i> 203 comments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="wellness-tracker">
+                <h3><i class="fas fa-chart-line"></i> Weekly Health Tracker</h3>
+                <div class="tracker-item">
+                    <div class="tracker-label">Sleep Quality</div>
+                    <div class="tracker-value">7.2/10</div>
+                </div>
+                <div class="tracker-progress">
+                    <div class="progress-bar" style="width: 72%"></div>
+                </div>
+                
+                <div class="tracker-item">
+                    <div class="tracker-label">Daily Steps</div>
+                    <div class="tracker-value">8,540</div>
+                </div>
+                <div class="tracker-progress">
+                    <div class="progress-bar" style="width: 85%"></div>
+                </div>
+                
+                <div class="tracker-item">
+                    <div class="tracker-label">Water Intake</div>
+                    <div class="tracker-value">1.8L</div>
+                </div>
+                <div class="tracker-progress">
+                    <div class="progress-bar" style="width: 90%"></div>
+                </div>
+                
+                <div class="tracker-item">
+                    <div class="tracker-label">Stress Level</div>
+                    <div class="tracker-value">Moderate</div>
+                </div>
+                <div class="tracker-progress">
+                    <div class="progress-bar" style="width: 60%"></div>
+                </div>
+            </div>
+            
+            <div class="doctor-consultation">
+                <h3><i class="fas fa-user-md"></i> Talk to a Doctor</h3>
+                <p>Have health concerns? Consult with board-certified doctors online from the comfort of your home.</p>
+                <button class="consult-btn">Start Consultation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HealthNewsWorld</h3>
+                    <p>Your trusted source for accurate, timely health information, medical news, and wellness guidance from healthcare professionals.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Health Resources</h3>
+                    <ul>
+                        <li><a href="#">Symptom Checker</a></li>
+                        <li><a href="#">Find a Doctor</a></li>
+                        <li><a href="#">Medication Guide</a></li>
+                        <li><a href="#">First Aid Information</a></li>
+                        <li><a href="#">Health Calculators</a></li>
+                        <li><a href="#">Clinical Trials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Health Topics</h3>
+                    <ul>
+                        <li><a href="#">Heart Disease</a></li>
+                        <li><a href="#">Diabetes</a></li>
+                        <li><a href="#">Cancer</a></li>
+                        <li><a href="#">Mental Health</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Senior Health</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 789 Health Avenue, Medical City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 234-5678</li>
+                        <li><i class="fas fa-envelope"></i> info@healthnewsworld.com</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Health Hotline</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 HealthNewsWorld. All rights reserved. | This information is for educational purposes only. Consult a healthcare professional for medical advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.querySelector('header nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // Category buttons interaction
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show notification of category change
+                const categoryName = this.textContent.trim();
+                alert(`Filtering by: ${categoryName} news`);
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const searchBtn = document.querySelector('.search-bar button');
+        
+        searchBtn.addEventListener('click', () => {
+            if(searchInput.value.trim()) {
+                alert(`Searching for health information about: ${searchInput.value}`);
+                // In a real implementation, this would redirect to search results
+            }
+        });
+        
+        searchInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter' && searchInput.value.trim()) {
+                alert(`Searching for health information about: ${searchInput.value}`);
+                // In a real implementation, this would redirect to search results
+            }
+        });
+        
+        // News card click simulation
+        const newsCards = document.querySelectorAll('.news-card');
+        newsCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h3').textContent;
+                alert(`Loading health article: ${title}`);
+                // In a real implementation, this would redirect to the article page
+            });
+        });
+        
+        // Doctor consultation button
+        const consultBtn = document.querySelector('.consult-btn');
+        consultBtn.addEventListener('click', function() {
+            alert('Redirecting to online doctor consultation service...');
+            // In a real implementation, this would redirect to a consultation service
+        });
+        
+        // Update COVID-19 stats (simulation)
+        function updateCovidStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            if(statNumbers.length >= 4) {
+                // Simulate small changes in numbers
+                const changes = [1000000, -500000, -20000, 50000000];
+                statNumbers.forEach((stat, index) => {
+                    const currentText = stat.textContent;
+                    const currentNumber = parseFloat(currentText.replace('M', '')) * 1000000;
+                    const newNumber = currentNumber + changes[index];
+                    const newDisplay = (newNumber / 1000000).toFixed(1) + 'M';
+                    
+                    // Animate the change
+                    stat.style.opacity = '0.5';
+                    stat.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        stat.textContent = newDisplay;
+                        stat.style.opacity = '1';
+                        stat.style.transform = 'scale(1)';
+                    }, 300);
+                });
+            }
+        }
+        
+        // Update stats every 20 seconds (simulation)
+        setInterval(updateCovidStats, 20000);
+        
+        // Update health tracker values (simulation)
+        function updateHealthTracker() {
+            const trackerValues = document.querySelectorAll('.tracker-value');
+            const progressBars = document.querySelectorAll('.progress-bar');
+            
+            if(trackerValues.length >= 4 && progressBars.length >= 4) {
+                // Sleep quality
+                const sleepValue = (Math.random() * 2 + 6.5).toFixed(1);
+                trackerValues[0].textContent = sleepValue + '/10';
+                progressBars[0].style.width = (parseFloat(sleepValue) * 10) + '%';
+                
+                // Daily steps
+                const steps = Math.floor(Math.random() * 3000 + 7000);
+                trackerValues[1].textContent = steps.toLocaleString();
+                progressBars[1].style.width = Math.min(100, (steps / 10000) * 100) + '%';
+                
+                // Water intake
+                const water = (Math.random() * 0.5 + 1.5).toFixed(1);
+                trackerValues[2].textContent = water + 'L';
+                progressBars[2].style.width = (parseFloat(water) / 2 * 100) + '%';
+                
+                // Stress level
+                const stressLevels = ['Low', 'Moderate', 'High'];
+                const stressIndex = Math.floor(Math.random() * 3);
+                trackerValues[3].textContent = stressLevels[stressIndex];
+                progressBars[3].style.width = [30, 60, 90][stressIndex] + '%';
+            }
+        }
+        
+        // Update tracker every 15 seconds (simulation)
+        setInterval(updateHealthTracker, 15000);
+        
+        // Initialize with random tip icon colors
+        document.addEventListener('DOMContentLoaded', () => {
+            const tipIcons = document.querySelectorAll('.tip-icon');
+            const colors = ['#0ea5e9', '#10b981', '#8b5cf6', '#ec4899', '#f59e0b'];
+            
+            tipIcons.forEach((icon, index) => {
+                icon.style.backgroundColor = colors[index % colors.length];
+            });
+            
+            // Initialize health tracker with random values
+            updateHealthTracker();
+        });
+        
+        // Alert banner close simulation
+        const alertBanner = document.querySelector('.alert-banner');
+        alertBanner.addEventListener('click', function() {
+            this.style.opacity = '0.7';
+            setTimeout(() => {
+                this.style.display = 'none';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
