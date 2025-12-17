@@ -954,21 +954,33 @@
                     <img src="https://ichef.bbci.co.uk/news/240/cpsprodpb/e67c/live/c1bb9f30-dae5-11f0-b072-97a1912d9a89.jpg.webp">
                     <div class="main-story-content">
                         <button id="myBtn"> <h2>Trump orders blockade of sanctioned oil tankers in and out of Venezuela </h2></button> 
-                        <script>
+                       <script>
+  // Initialize click count
   let clickCount = 0;
 
-  document.getElementById("myBtn").addEventListener("click", function () {
+  // Get the button by ID
+  const button = document.getElementById("myBtn");
+
+  // Add click event listener
+  button.addEventListener("click", function() {
     clickCount++;
 
     if (clickCount === 1) {
-      // First click → Monetag link
+      // First click → open Monetag link in a new window
       window.open("https://YOUR_MONETAG_LINK_HERE", "_blank");
+      // Optional: Change button text after first click
+      button.innerText = "Click Again for Original Link";
     } else {
-      // Second click → Original link
-      window.open location.href =("https://YOUR_ORIGINAL_LINK_HERE";
+      // Second click → open original link in a new window
+      window.open("https://YOUR_ORIGINAL_LINK_HERE", "_blank");
+      // Reset click count if you want to repeat the same behavior
+      clickCount = 0;
+      // Optional: Reset button text
+      button.innerText = "Read More";
     }
   });
 </script>
+
 
                         <p>It comes a week after the US seized an oil tanker off the coast of Venezuela, in a move that intensified pressure on its government.</p>
                         <div class="story-meta">
@@ -1309,6 +1321,7 @@
     </script>
 </body>
 </html>
+
 
 
 
