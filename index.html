@@ -16,6 +16,9 @@
             --gray: #5f6368;
             --border: #dadce0;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --sport-blue: #1e90ff;
+            --sport-green: #2ed573;
+            --sport-orange: #ffa502;
         }
         
         * {
@@ -26,6 +29,7 @@
         
         html {
             font-size: 16px;
+            scroll-behavior: smooth;
         }
         
         body {
@@ -46,6 +50,21 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
+        }
+        
+        /* Page Sections */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         /* Header Styles */
@@ -522,11 +541,276 @@
             gap: 10px;
         }
         
+        /* SPORTS PAGE SPECIFIC STYLES */
+        
+        /* Sports Live Ticker */
+        .sports-ticker {
+            background-color: var(--dark);
+            color: white;
+            padding: 12px 0;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .ticker-container {
+            display: flex;
+            animation: ticker 30s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-right: 40px;
+            white-space: nowrap;
+            padding: 0 15px;
+        }
+        
+        .sport-team {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .team-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--sport-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .sport-score {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--sport-green);
+        }
+        
+        .match-status {
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .live-match {
+            background-color: var(--primary);
+        }
+        
+        .finished-match {
+            background-color: var(--sport-blue);
+        }
+        
+        /* Sports Categories */
+        .sports-categories {
+            padding: 20px 0;
+            margin-bottom: 25px;
+        }
+        
+        .sports-categories h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .sport-category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        
+        .sport-category-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 140px;
+            justify-content: center;
+        }
+        
+        .sport-category-btn:hover {
+            background-color: var(--sport-blue);
+            color: white;
+            border-color: var(--sport-blue);
+        }
+        
+        .sport-category-btn.active {
+            background-color: var(--sport-blue);
+            color: white;
+            border-color: var(--sport-blue);
+        }
+        
+        /* Featured Matches */
+        .featured-matches {
+            margin-bottom: 30px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h2 {
+            font-size: 1.6rem;
+            color: var(--dark);
+        }
+        
+        .view-all {
+            color: var(--sport-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        
+        .match-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .match-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .match-header {
+            background: linear-gradient(to right, var(--sport-blue), #6ab1f7);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .match-teams {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 20px;
+            gap: 15px;
+            text-align: center;
+        }
+        
+        .match-team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .team-logo-large {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .vs {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .match-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            padding: 10px 0;
+            background-color: var(--light);
+        }
+        
+        .match-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: var(--light);
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        
+        /* Sports Sidebar */
+        .sports-sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .standings {
+            margin-bottom: 25px;
+        }
+        
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .standings-table th {
+            background-color: var(--light);
+            padding: 10px;
+            text-align: left;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .standings-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .team-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .position {
+            font-weight: 700;
+            color: var(--sport-blue);
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
             padding: 40px 0 20px;
+            margin-top: 50px;
         }
         
         .footer-content {
@@ -594,6 +878,23 @@
             line-height: 1.5;
         }
         
+        /* Back to Home Button */
+        .back-to-home {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .back-to-home:hover {
+            color: var(--primary);
+        }
+        
         /* Mobile-First Responsive Design */
         
         /* Large Tablets and Small Laptops */
@@ -620,6 +921,10 @@
             
             .footer-content {
                 gap: 20px;
+            }
+            
+            .matches-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
         
@@ -686,11 +991,11 @@
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             
-            .category-buttons {
+            .category-buttons, .sport-category-buttons {
                 justify-content: flex-start;
             }
             
-            .category-btn {
+            .category-btn, .sport-category-btn {
                 min-width: 100px;
                 padding: 8px 15px;
                 font-size: 0.85rem;
@@ -704,6 +1009,28 @@
             .social-icons a {
                 width: 40px;
                 height: 40px;
+            }
+            
+            .match-teams {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .vs {
+                display: none;
+            }
+            
+            .match-card {
+                text-align: center;
+            }
+            
+            .match-team {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .sport-category-btn {
+                min-width: calc(50% - 12px);
             }
         }
         
@@ -751,16 +1078,16 @@
                 font-size: 1rem;
             }
             
-            .categories h2 {
+            .categories h2, .sports-categories h2, .section-header h2 {
                 font-size: 1.4rem;
                 text-align: center;
             }
             
-            .category-buttons {
+            .category-buttons, .sport-category-buttons {
                 gap: 8px;
             }
             
-            .category-btn {
+            .category-btn, .sport-category-btn {
                 min-width: calc(50% - 8px);
                 padding: 10px 12px;
             }
@@ -800,6 +1127,15 @@
             .footer-column h3 {
                 font-size: 1.1rem;
             }
+            
+            .matches-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ticker-item {
+                gap: 10px;
+                margin-right: 20px;
+            }
         }
         
         /* Small Mobile Devices */
@@ -837,7 +1173,7 @@
                 padding: 15px;
             }
             
-            .category-btn {
+            .category-btn, .sport-category-btn {
                 min-width: 100%;
             }
             
@@ -845,7 +1181,7 @@
                 padding: 15px;
             }
             
-            .sidebar {
+            .sidebar, .sports-sidebar {
                 padding: 15px;
             }
             
@@ -866,12 +1202,18 @@
             .social-icons {
                 justify-content: center;
             }
+            
+            .sport-category-btn {
+                min-width: 100%;
+            }
         }
         
         /* Touch-friendly improvements */
         button, 
         .category-btn, 
+        .sport-category-btn,
         .news-card,
+        .match-card,
         .search-bar input,
         .search-bar button {
             cursor: pointer;
@@ -879,6 +1221,7 @@
         }
         
         .category-btn,
+        .sport-category-btn,
         .search-bar button,
         .mobile-menu-btn {
             touch-action: manipulation;
@@ -904,14 +1247,12 @@
             <div class="header-bottom">
                 <nav>
                     <ul>
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">World</a></li>
-                        <li><a href="#">Politics</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Science</a></li>
-                        <li><a href="#">Health</a></li>
-                        <li><a href="#">Sports</a></li>
+                        <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="sports">Sports</a></li>
+                        <li><a href="#" class="nav-link" data-page="world">World</a></li>
+                        <li><a href="#" class="nav-link" data-page="politics">Politics</a></li>
+                        <li><a href="#" class="nav-link" data-page="business">Business</a></li>
+                        <li><a href="#" class="nav-link" data-page="technology">Technology</a></li>
                     </ul>
                 </nav>
                 <div class="search-bar">
@@ -931,176 +1272,477 @@
             <i class="fas fa-times"></i>
         </button>
         <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">World</a></li>
-            <li><a href="#">Politics</a></li>
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">Science</a></li>
-            <li><a href="#">Health</a></li>
-            <li><a href="#">Sports</a></li>
-            <li><a href="#">Entertainment</a></li>
-            <li><a href="#">Weather</a></li>
-            <li><a href="#">Opinion</a></li>
-            <li><a href="#">More</a></li>
+            <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+            <li><a href="#" class="nav-link" data-page="sports">Sports</a></li>
+            <li><a href="#" class="nav-link" data-page="world">World</a></li>
+            <li><a href="#" class="nav-link" data-page="politics">Politics</a></li>
+            <li><a href="#" class="nav-link" data-page="business">Business</a></li>
+            <li><a href="#" class="nav-link" data-page="technology">Technology</a></li>
+            <li><a href="#" class="nav-link" data-page="science">Science</a></li>
+            <li><a href="#" class="nav-link" data-page="health">Health</a></li>
+            <li><a href="#" class="nav-link" data-page="entertainment">Entertainment</a></li>
         </ul>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="main-story">
-                    <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Global Summit">
-                    <div class="main-story-content">
-                        <h2>Global Leaders Gather for Climate Summit: New Agreements Expected</h2>
-                        <p>World leaders from over 50 countries convene in Paris to discuss urgent climate action and announce new carbon reduction targets.</p>
-                        <div class="story-meta">
-                            <span><i class="far fa-clock"></i> 2 hours ago</span>
-                            <span><i class="far fa-user"></i> By Sarah Johnson</span>
-                            <span><i class="far fa-eye"></i> 15.2K views</span>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="main-story">
+                        <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Global Summit">
+                        <div class="main-story-content">
+                            <h2>Global Leaders Gather for Climate Summit: New Agreements Expected</h2>
+                            <p>World leaders from over 50 countries convene in Paris to discuss urgent climate action and announce new carbon reduction targets.</p>
+                            <div class="story-meta">
+                                <span><i class="far fa-clock"></i> 2 hours ago</span>
+                                <span><i class="far fa-user"></i> By Sarah Johnson</span>
+                                <span><i class="far fa-eye"></i> 15.2K views</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="breaking-news">
+                        <h3><i class="fas fa-bolt"></i> Breaking News</h3>
+                        <div class="breaking-item">
+                            <h4>Tech Giant Unveils Revolutionary AI Assistant</h4>
+                            <time>45 minutes ago</time>
+                        </div>
+                        <div class="breaking-item">
+                            <h4>Stock Markets Reach Record High Amid Economic Optimism</h4>
+                            <time>1 hour ago</time>
+                        </div>
+                        <div class="breaking-item">
+                            <h4>Major Breakthrough in Renewable Energy Storage</h4>
+                            <time>2 hours ago</time>
+                        </div>
+                        <div class="breaking-item">
+                            <h4>National Soccer Team Advances to World Cup Finals</h4>
+                            <time>3 hours ago</time>
                         </div>
                     </div>
                 </div>
-                <div class="breaking-news">
-                    <h3><i class="fas fa-bolt"></i> Breaking News</h3>
-                    <div class="breaking-item">
-                        <h4>Tech Giant Unveils Revolutionary AI Assistant</h4>
-                        <time>45 minutes ago</time>
+            </div>
+        </section>
+
+        <!-- News Categories -->
+        <section class="categories">
+            <div class="container">
+                <h2>Browse by Category</h2>
+                <div class="category-buttons">
+                    <button class="category-btn active">All News</button>
+                    <button class="category-btn">World</button>
+                    <button class="category-btn">Politics</button>
+                    <button class="category-btn">Business</button>
+                    <button class="category-btn">Technology</button>
+                    <button class="category-btn">Science</button>
+                    <button class="category-btn">Health</button>
+                    <button class="category-btn">Entertainment</button>
+                    <button class="category-btn">Sports</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content with Sidebar -->
+        <div class="container content-with-sidebar">
+            <!-- News Grid -->
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Tech Innovation">
+                    <div class="news-card-content">
+                        <span class="category-tag" style="background-color: var(--secondary);">Technology</span>
+                        <h3>New Smartphone Unveiled with Foldable Display</h3>
+                        <p>The latest smartphone innovation features a revolutionary foldable screen that can transform from phone to tablet.</p>
+                        <div class="news-card-footer">
+                            <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            <span><i class="far fa-comment"></i> 342 comments</span>
+                        </div>
                     </div>
-                    <div class="breaking-item">
-                        <h4>Stock Markets Reach Record High Amid Economic Optimism</h4>
-                        <time>1 hour ago</time>
+                </div>
+                
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Business Meeting">
+                    <div class="news-card-content">
+                        <span class="category-tag" style="background-color: #00c853;">Business</span>
+                        <h3>Global Markets Surge Amid Positive Economic Data</h3>
+                        <p>Stock markets worldwide show strong gains as economic indicators point to sustained recovery.</p>
+                        <div class="news-card-footer">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            <span><i class="far fa-comment"></i> 189 comments</span>
+                        </div>
                     </div>
-                    <div class="breaking-item">
-                        <h4>Major Breakthrough in Renewable Energy Storage</h4>
-                        <time>2 hours ago</time>
+                </div>
+                
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1131&q=80" alt="Athlete">
+                    <div class="news-card-content">
+                        <span class="category-tag" style="background-color: var(--sport-blue);">Sports</span>
+                        <h3>National Team Secures Spot in Championship Final</h3>
+                        <p>After a thrilling semi-final match, the national soccer team advances to the international championship final.</p>
+                        <div class="news-card-footer">
+                            <span><i class="far fa-clock"></i> 8 hours ago</span>
+                            <span><i class="far fa-comment"></i> 521 comments</span>
+                        </div>
                     </div>
-                    <div class="breaking-item">
-                        <h4>National Soccer Team Advances to World Cup Finals</h4>
-                        <time>3 hours ago</time>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3><i class="fas fa-chart-line"></i> Trending Now</h3>
+                <ul class="trending-list">
+                    <li>
+                        <div class="trending-number">1</div>
+                        <div class="trending-content">
+                            <h4>Climate Summit: What to Expect</h4>
+                            <time>2 hours ago</time>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="trending-number">2</div>
+                        <div class="trending-content">
+                            <h4>AI Regulation Debate Intensifies</h4>
+                            <time>4 hours ago</time>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="trending-number">3</div>
+                        <div class="trending-content">
+                            <h4>New Cancer Treatment Shows Promise</h4>
+                            <time>6 hours ago</time>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="trending-number">4</div>
+                        <div class="trending-content">
+                            <h4>Space Mission Discovers Water on Mars</h4>
+                            <time>8 hours ago</time>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="trending-number">5</div>
+                        <div class="trending-content">
+                            <h4>Film Festival Announces Winners</h4>
+                            <time>10 hours ago</time>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="weather-widget">
+                    <div class="weather-header">
+                        <div>
+                            <h3><i class="fas fa-cloud-sun"></i> New York</h3>
+                            <p>Partly Cloudy</p>
+                        </div>
+                        <div class="weather-temp">72°F</div>
+                    </div>
+                    <div class="weather-details">
+                        <div>Humidity: 65%</div>
+                        <div>Wind: 8 mph</div>
+                        <div>Sunrise: 6:24 AM</div>
+                        <div>Sunset: 7:45 PM</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- News Categories -->
-    <section class="categories">
+    <!-- Sports Page -->
+    <div id="sports-page" class="page">
         <div class="container">
-            <h2>Browse by Category</h2>
-            <div class="category-buttons">
-                <button class="category-btn active">All News</button>
-                <button class="category-btn">World</button>
-                <button class="category-btn">Politics</button>
-                <button class="category-btn">Business</button>
-                <button class="category-btn">Technology</button>
-                <button class="category-btn">Science</button>
-                <button class="category-btn">Health</button>
-                <button class="category-btn">Entertainment</button>
-                <button class="category-btn">Sports</button>
+            <!-- Back to Home -->
+            <a href="#" class="back-to-home" data-page="home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            
+            <!-- Sports Live Ticker -->
+            <div class="sports-ticker">
+                <div class="ticker-container">
+                    <div class="ticker-item">
+                        <div class="sport-team">
+                            <div class="team-logo">RM</div>
+                            <span>Real Madrid</span>
+                        </div>
+                        <div class="sport-score">2 - 1</div>
+                        <div class="sport-team">
+                            <span>Barcelona</span>
+                            <div class="team-logo">FCB</div>
+                        </div>
+                        <div class="match-status live-match">LIVE 65'</div>
+                    </div>
+                    <div class="ticker-item">
+                        <div class="sport-team">
+                            <div class="team-logo">LAL</div>
+                            <span>Lakers</span>
+                        </div>
+                        <div class="sport-score">98 - 102</div>
+                        <div class="sport-team">
+                            <span>Warriors</span>
+                            <div class="team-logo">GSW</div>
+                        </div>
+                        <div class="match-status finished-match">FINAL</div>
+                    </div>
+                    <div class="ticker-item">
+                        <div class="sport-team">
+                            <div class="team-logo">NE</div>
+                            <span>New England</span>
+                        </div>
+                        <div class="sport-score">24 - 17</div>
+                        <div class="sport-team">
+                            <span>Kansas City</span>
+                            <div class="team-logo">KC</div>
+                        </div>
+                        <div class="match-status live-match">LIVE Q4</div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Main Content with Sidebar -->
-    <div class="container content-with-sidebar">
-        <!-- News Grid -->
-        <div class="news-grid">
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Tech Innovation">
-                <div class="news-card-content">
-                    <span class="category-tag" style="background-color: var(--secondary);">Technology</span>
-                    <h3>New Smartphone Unveiled with Foldable Display</h3>
-                    <p>The latest smartphone innovation features a revolutionary foldable screen that can transform from phone to tablet.</p>
-                    <div class="news-card-footer">
-                        <span><i class="far fa-clock"></i> 4 hours ago</span>
-                        <span><i class="far fa-comment"></i> 342 comments</span>
+            <!-- Sports Hero Section -->
+            <section class="hero">
+                <div class="hero-grid">
+                    <div class="main-story">
+                        <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Football Championship">
+                        <div class="main-story-content">
+                            <h2>Champions League Final: Historic Victory for Underdogs</h2>
+                            <p>In a stunning upset, underdog team clinches their first Champions League title with a last-minute goal in overtime.</p>
+                            <div class="story-meta">
+                                <span><i class="far fa-clock"></i> 3 hours ago</span>
+                                <span><i class="far fa-user"></i> By Michael Johnson</span>
+                                <span><i class="far fa-eye"></i> 42.5K views</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="breaking-news">
+                        <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+                        <div class="breaking-item">
+                            <h4>NBA Finals: Game 7</h4>
+                            <time>Tomorrow, 8:00 PM EST</time>
+                        </div>
+                        <div class="breaking-item">
+                            <h4>Wimbledon: Men's Final</h4>
+                            <time>Sunday, 2:00 PM GMT</time>
+                        </div>
+                        <div class="breaking-item">
+                            <h4>MLB All-Star Game</h4>
+                            <time>July 15, 7:30 PM EST</time>
+                        </div>
+                        <div class="breaking-item">
+                            <h4>Tour de France: Final Stage</h4>
+                            <time>July 23, 10:00 AM CET</time>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Business Meeting">
-                <div class="news-card-content">
-                    <span class="category-tag" style="background-color: #00c853;">Business</span>
-                    <h3>Global Markets Surge Amid Positive Economic Data</h3>
-                    <p>Stock markets worldwide show strong gains as economic indicators point to sustained recovery.</p>
-                    <div class="news-card-footer">
-                        <span><i class="far fa-clock"></i> 6 hours ago</span>
-                        <span><i class="far fa-comment"></i> 189 comments</span>
+            </section>
+
+            <!-- Sports Categories -->
+            <section class="sports-categories">
+                <div class="container">
+                    <h2>Sports Categories</h2>
+                    <div class="sport-category-buttons">
+                        <button class="sport-category-btn active">
+                            <i class="fas fa-futbol"></i> All Sports
+                        </button>
+                        <button class="sport-category-btn">
+                            <i class="fas fa-football-ball"></i> Football
+                        </button>
+                        <button class="sport-category-btn">
+                            <i class="fas fa-basketball-ball"></i> Basketball
+                        </button>
+                        <button class="sport-category-btn">
+                            <i class="fas fa-baseball-ball"></i> Baseball
+                        </button>
+                        <button class="sport-category-btn">
+                            <i class="fas fa-tennis-ball"></i> Tennis
+                        </button>
+                        <button class="sport-category-btn">
+                            <i class="fas fa-hockey-puck"></i> Hockey
+                        </button>
                     </div>
                 </div>
-            </div>
-            
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1131&q=80" alt="Athlete">
-                <div class="news-card-content">
-                    <span class="category-tag" style="background-color: #ff4655;">Sports</span>
-                    <h3>National Team Secures Spot in Championship Final</h3>
-                    <p>After a thrilling semi-final match, the national soccer team advances to the international championship final.</p>
-                    <div class="news-card-footer">
-                        <span><i class="far fa-clock"></i> 8 hours ago</span>
-                        <span><i class="far fa-comment"></i> 521 comments</span>
+            </section>
+
+            <!-- Featured Matches -->
+            <section class="featured-matches">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Featured Matches</h2>
+                        <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="matches-grid">
+                        <div class="match-card">
+                            <div class="match-header">
+                                <span>Champions League - Final</span>
+                                <span class="match-status live-match">LIVE</span>
+                            </div>
+                            <div class="match-teams">
+                                <div class="match-team">
+                                    <div class="team-logo-large">RM</div>
+                                    <div class="team-name">Real Madrid</div>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="match-team">
+                                    <div class="team-name">Barcelona</div>
+                                    <div class="team-logo-large">FCB</div>
+                                </div>
+                            </div>
+                            <div class="match-score">2 - 1</div>
+                            <div class="match-footer">
+                                <span><i class="far fa-clock"></i> 65th Minute</span>
+                                <span><i class="fas fa-tv"></i> ESPN</span>
+                            </div>
+                        </div>
+                        
+                        <div class="match-card">
+                            <div class="match-header">
+                                <span>NBA Finals - Game 6</span>
+                                <span class="match-status finished-match">FINAL</span>
+                            </div>
+                            <div class="match-teams">
+                                <div class="match-team">
+                                    <div class="team-logo-large">LAL</div>
+                                    <div class="team-name">Lakers</div>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="match-team">
+                                    <div class="team-name">Warriors</div>
+                                    <div class="team-logo-large">GSW</div>
+                                </div>
+                            </div>
+                            <div class="match-score">98 - 102</div>
+                            <div class="match-footer">
+                                <span><i class="far fa-clock"></i> Final</span>
+                                <span><i class="fas fa-tv"></i> TNT</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <h3><i class="fas fa-chart-line"></i> Trending Now</h3>
-            <ul class="trending-list">
-                <li>
-                    <div class="trending-number">1</div>
-                    <div class="trending-content">
-                        <h4>Climate Summit: What to Expect</h4>
-                        <time>2 hours ago</time>
+            </section>
+
+            <!-- Sports Content with Sidebar -->
+            <div class="container content-with-sidebar">
+                <!-- Sports News Grid -->
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Basketball">
+                        <div class="news-card-content">
+                            <span class="category-tag" style="background-color: var(--sport-blue);">Basketball</span>
+                            <h3>NBA Draft 2023: Top Prospects Revealed</h3>
+                            <p>Scouts and analysts reveal their top 10 prospects for the upcoming NBA draft, with surprises in the rankings.</p>
+                            <div class="news-card-footer">
+                                <span><i class="far fa-clock"></i> 5 hours ago</span>
+                                <span><i class="far fa-comment"></i> 124 comments</span>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <div class="trending-number">2</div>
-                    <div class="trending-content">
-                        <h4>AI Regulation Debate Intensifies</h4>
-                        <time>4 hours ago</time>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Tennis">
+                        <div class="news-card-content">
+                            <span class="category-tag" style="background-color: var(--sport-orange);">Tennis</span>
+                            <h3>Wimbledon: New Rising Star Emerges</h3>
+                            <p>18-year-old sensation defeats former champion in straight sets, becoming youngest quarterfinalist in a decade.</p>
+                            <div class="news-card-footer">
+                                <span><i class="far fa-clock"></i> 7 hours ago</span>
+                                <span><i class="far fa-comment"></i> 89 comments</span>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <div class="trending-number">3</div>
-                    <div class="trending-content">
-                        <h4>New Cancer Treatment Shows Promise</h4>
-                        <time>6 hours ago</time>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Baseball">
+                        <div class="news-card-content">
+                            <span class="category-tag" style="background-color: var(--sport-green);">Baseball</span>
+                            <h3>MLB Season Hits Halfway Mark</h3>
+                            <p>Surprise teams lead divisions as MLB reaches the midway point of the season. Analysis of the biggest surprises.</p>
+                            <div class="news-card-footer">
+                                <span><i class="far fa-clock"></i> 9 hours ago</span>
+                                <span><i class="far fa-comment"></i> 203 comments</span>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <div class="trending-number">4</div>
-                    <div class="trending-content">
-                        <h4>Space Mission Discovers Water on Mars</h4>
-                        <time>8 hours ago</time>
-                    </div>
-                </li>
-                <li>
-                    <div class="trending-number">5</div>
-                    <div class="trending-content">
-                        <h4>Film Festival Announces Winners</h4>
-                        <time>10 hours ago</time>
-                    </div>
-                </li>
-            </ul>
-            
-            <div class="weather-widget">
-                <div class="weather-header">
-                    <div>
-                        <h3><i class="fas fa-cloud-sun"></i> New York</h3>
-                        <p>Partly Cloudy</p>
-                    </div>
-                    <div class="weather-temp">72°F</div>
                 </div>
-                <div class="weather-details">
-                    <div>Humidity: 65%</div>
-                    <div>Wind: 8 mph</div>
-                    <div>Sunrise: 6:24 AM</div>
-                    <div>Sunset: 7:45 PM</div>
+                
+                <!-- Sports Sidebar -->
+                <div class="sports-sidebar">
+                    <div class="standings">
+                        <h3><i class="fas fa-trophy"></i> Premier League Standings</h3>
+                        <table class="standings-table">
+                            <thead>
+                                <tr>
+                                    <th>Pos</th>
+                                    <th>Team</th>
+                                    <th>Pts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="position">1</td>
+                                    <td>
+                                        <div class="team-row">
+                                            <div class="team-logo">MC</div>
+                                            <span>Man City</span>
+                                        </div>
+                                    </td>
+                                    <td>89</td>
+                                </tr>
+                                <tr>
+                                    <td class="position">2</td>
+                                    <td>
+                                        <div class="team-row">
+                                            <div class="team-logo">ARS</div>
+                                            <span>Arsenal</span>
+                                        </div>
+                                    </td>
+                                    <td>84</td>
+                                </tr>
+                                <tr>
+                                    <td class="position">3</td>
+                                    <td>
+                                        <div class="team-row">
+                                            <div class="team-logo">MU</div>
+                                            <span>Man United</span>
+                                        </div>
+                                    </td>
+                                    <td>75</td>
+                                </tr>
+                                <tr>
+                                    <td class="position">4</td>
+                                    <td>
+                                        <div class="team-row">
+                                            <div class="team-logo">NEW</div>
+                                            <span>Newcastle</span>
+                                        </div>
+                                    </td>
+                                    <td>71</td>
+                                </tr>
+                                <tr>
+                                    <td class="position">5</td>
+                                    <td>
+                                        <div class="team-row">
+                                            <div class="team-logo">LIV</div>
+                                            <span>Liverpool</span>
+                                        </div>
+                                    </td>
+                                    <td>67</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="weather-widget" style="background: linear-gradient(to right, var(--sport-blue), #6ab1f7);">
+                        <div class="weather-header">
+                            <div>
+                                <h3><i class="fas fa-running"></i> Sports Calendar</h3>
+                                <p>Upcoming Major Events</p>
+                            </div>
+                        </div>
+                        <div class="weather-details">
+                            <div>June 15: NBA Finals</div>
+                            <div>July 1: Wimbledon</div>
+                            <div>July 15: MLB All-Star</div>
+                            <div>Aug 20: Champions League</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1124,21 +1766,21 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="sports">Sports</a></li>
+                        <li><a href="#" data-page="world">World</a></li>
+                        <li><a href="#" data-page="politics">Politics</a></li>
+                        <li><a href="#" data-page="business">Business</a></li>
+                        <li><a href="#" data-page="technology">Technology</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>News Categories</h3>
                     <ul>
-                        <li><a href="#">World News</a></li>
-                        <li><a href="#">Politics</a></li>
-                        <li><a href="#">Business & Finance</a></li>
-                        <li><a href="#">Technology</a></li>
+                        <li><a href="#" data-page="home">World News</a></li>
+                        <li><a href="#" data-page="sports">Sports</a></li>
+                        <li><a href="#" data-page="business">Business & Finance</a></li>
+                        <li><a href="#" data-page="technology">Technology</a></li>
                         <li><a href="#">Science & Environment</a></li>
                         <li><a href="#">Health</a></li>
                     </ul>
@@ -1160,6 +1802,91 @@
     </footer>
 
     <script>
+        // Page Navigation System
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all page elements
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav .nav-link');
+            const backToHome = document.querySelector('.back-to-home');
+            
+            // Function to switch page
+            function switchPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                const activePage = document.getElementById(pageId);
+                if (activePage) {
+                    activePage.classList.add('active');
+                }
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Update mobile nav links
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Close mobile nav if open
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                // Scroll to top of page
+                window.scrollTo(0, 0);
+            }
+            
+            // Add click event to all navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    switchPage(pageId);
+                });
+            });
+            
+            // Add click event to mobile navigation links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    switchPage(pageId);
+                });
+            });
+            
+            // Back to home button
+            if (backToHome) {
+                backToHome.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    switchPage('home-page');
+                });
+            }
+            
+            // Footer links
+            const footerLinks = document.querySelectorAll('.footer-column a[data-page]');
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    switchPage(pageId);
+                });
+            });
+            
+            // Initialize with home page
+            switchPage('home-page');
+        });
+
         // Mobile navigation functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
@@ -1175,13 +1902,14 @@
             document.body.style.overflow = 'auto';
         });
         
-        // Close mobile nav when clicking on a link
-        const mobileNavLinks = mobileNav.querySelectorAll('a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
+        // Close mobile nav when clicking outside
+        window.addEventListener('click', (e) => {
+            if (mobileNav.classList.contains('active') && 
+                !mobileNav.contains(e.target) && 
+                e.target !== mobileMenuBtn) {
                 mobileNav.classList.remove('active');
                 document.body.style.overflow = 'auto';
-            });
+            }
         });
         
         // Update current date and time
@@ -1208,6 +1936,15 @@
         categoryBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Sports category buttons interaction
+        const sportCategoryBtns = document.querySelectorAll('.sport-category-btn');
+        sportCategoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                sportCategoryBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
             });
         });
@@ -1240,26 +1977,74 @@
             });
         });
         
+        // Match card click simulation
+        const matchCards = document.querySelectorAll('.match-card');
+        matchCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const matchInfo = this.querySelector('.match-header span:first-child').textContent;
+                alert(`Loading match details: ${matchInfo}`);
+                // In a real implementation, this would redirect to the match page
+            });
+        });
+        
         // Weather update simulation
         function updateWeather() {
             const tempElement = document.querySelector('.weather-temp');
-            const temps = ['72°F', '74°F', '70°F', '68°F'];
-            const currentTemp = tempElement.textContent;
-            const currentIndex = temps.indexOf(currentTemp);
-            const nextIndex = (currentIndex + 1) % temps.length;
-            
-            // Animate temperature change
-            tempElement.style.opacity = '0.5';
-            setTimeout(() => {
-                tempElement.textContent = temps[nextIndex];
-                tempElement.style.opacity = '1';
-            }, 300);
+            if (tempElement) {
+                const temps = ['72°F', '74°F', '70°F', '68°F'];
+                const currentTemp = tempElement.textContent;
+                const currentIndex = temps.indexOf(currentTemp);
+                const nextIndex = (currentIndex + 1) % temps.length;
+                
+                // Animate temperature change
+                tempElement.style.opacity = '0.5';
+                setTimeout(() => {
+                    tempElement.textContent = temps[nextIndex];
+                    tempElement.style.opacity = '1';
+                }, 300);
+            }
         }
         
         // Update weather every 30 seconds (simulation)
         setInterval(updateWeather, 30000);
         
-        // Initialize with a random trending article color
+        // Sports ticker animation
+        function initializeSportsTicker() {
+            const tickerContainer = document.querySelector('.ticker-container');
+            if (tickerContainer) {
+                // Clone the ticker content for seamless scrolling
+                const content = tickerContainer.innerHTML;
+                tickerContainer.innerHTML += content;
+            }
+        }
+        
+        // Initialize sports ticker when sports page is loaded
+        initializeSportsTicker();
+        
+        // Simulate live score updates on sports page
+        function updateLiveScores() {
+            const liveScoreElement = document.querySelector('.match-card .live-match + .match-score');
+            if (liveScoreElement) {
+                const scores = ['2 - 1', '2 - 2', '3 - 2', '3 - 3', '4 - 3'];
+                const currentScore = liveScoreElement.textContent;
+                const currentIndex = scores.indexOf(currentScore);
+                const nextIndex = (currentIndex + 1) % scores.length;
+                
+                // Animate score change
+                liveScoreElement.style.opacity = '0.5';
+                liveScoreElement.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    liveScoreElement.textContent = scores[nextIndex];
+                    liveScoreElement.style.opacity = '1';
+                    liveScoreElement.style.transform = 'scale(1)';
+                }, 300);
+            }
+        }
+        
+        // Update scores every 10 seconds (simulation)
+        setInterval(updateLiveScores, 10000);
+        
+        // Initialize with random trending article color
         document.addEventListener('DOMContentLoaded', () => {
             const trendingNumbers = document.querySelectorAll('.trending-number');
             const colors = ['#ff4655', '#1a73e8', '#00c853', '#ff9800', '#9c27b0'];
@@ -1268,14 +2053,12 @@
                 number.style.backgroundColor = colors[index % colors.length];
             });
             
-            // Close mobile nav when clicking outside
-            window.addEventListener('click', (e) => {
-                if (mobileNav.classList.contains('active') && 
-                    !mobileNav.contains(e.target) && 
-                    e.target !== mobileMenuBtn) {
-                    mobileNav.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
+            // Initialize team logo colors
+            const teamLogos = document.querySelectorAll('.team-logo-large');
+            const logoColors = ['#ff4757', '#00a8ff', '#2ed573', '#ffa502', '#9c88ff', '#fbc531'];
+            
+            teamLogos.forEach((logo, index) => {
+                logo.style.backgroundColor = logoColors[index % logoColors.length];
             });
             
             // Add touch-friendly improvements for mobile
@@ -1283,7 +2066,7 @@
                 document.body.classList.add('touch-device');
                 
                 // Increase touch target sizes for mobile
-                const touchElements = document.querySelectorAll('button, .category-btn, .news-card, a');
+                const touchElements = document.querySelectorAll('button, .category-btn, .sport-category-btn, .news-card, .match-card, a');
                 touchElements.forEach(el => {
                     el.style.minHeight = '44px';
                     el.style.minWidth = '44px';
