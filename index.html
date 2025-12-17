@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourNewsWorld - Latest News & Updates</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #2d3748;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-container a:hover {
+            background-color: #4a5568;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2d3748;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        /* News Grid Layout */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* News Card Styling */
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-headline {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #2d3748;
+        }
+
+        .news-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .read-more-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+        }
+
+        .read-more-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .nav-container a {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section with Logo -->
+    <header>
+        <div class="header-container">
+            <div class="logo">YourNewsWorld</div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-link" data-original="index.html">Home</a>
+            <a href="#" class="nav-link" data-original="index.html">Breaking News</a>
+            <a href="#" class="nav-link" data-original="index.html">World</a>
+            <a href="#" class="nav-link" data-original="https://www.bbc.com/innovation">Tech</a>
+            <a href="#" class="nav-link" data-original="https://www.bbc.com/sport">Sports</a>
+            <a href="#" class="nav-link" data-original="https://www.bbc.com/travel">Entertainment</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <h1 class="page-title">Latest Breaking News</h1>
+
+        <!-- News Cards Grid -->
+        <div class="news-grid">
+            <!-- News Card 1 -->
+            <div class="news-card" data-original="https://www.bbc.com/news/articles/c98nm1ry38jo">
+                <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/e3a4/live/1d7c9e90-db23-11f0-94c7-2d2719dc628b.jpg.webp" alt="Tech News" class="news-image">
+                <div class="news-content">
+                    <h2 class="news-headline">Naveed Akram charged with 15 counts of murder over Bondi shooting</h2>
+                    <p class="news-description">Naveed Akram, the surviving suspect in Sunday's mass shooting at Bondi Beach in Sydney, has been charged with 59 offences, including 15 counts of murder and one of committing a terrorist act, the New South Wales police say.</p>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+            </div>
+
+            <!-- News Card 2 -->
+            <div class="news-card" data-original=https://www.bbc.com/news/articles/c4gkvxlpn55o">
+                <img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/3b48/live/692f6530-dacd-11f0-a8dc-93c15fe68710.jpg.webp" alt="World News" class="news-image">
+                <div class="news-content">
+                    <h2 class="news-headline">Trump expands US travel ban to five more countries</h2>
+                    <p class="news-description">The US will restrict entry of people from Burkina Faso, Mali, Niger, South Sudan and Syria as well as holders of Palestinian Authority passports.</p>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+            </div>
+
+            <!-- News Card 3 -->
+            <div class="news-card" data-original="https://example.com/news/sports-championship">
+                <img src="https://via.placeholder.com/400x200/f093fb/ffffff?text=Sports+News" alt="Sports News" class="news-image">
+                <div class="news-content">
+                    <h2 class="news-headline">Championship Victory Stuns Fans</h2>
+                    <p class="news-description">Underdog team claims unexpected victory in thrilling championship match that went down to the final seconds.</p>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+            </div>
+
+            <!-- News Card 4 -->
+            <div class="news-card" data-original="https://example.com/news/entertainment-awards">
+                <img src="https://via.placeholder.com/400x200/4facfe/ffffff?text=Entertainment" alt="Entertainment News" class="news-image">
+                <div class="news-content">
+                    <h2 class="news-headline">Star-Studded Awards Ceremony Tonight</h2>
+                    <p class="news-description">Hollywood's biggest stars prepare for annual awards show featuring surprise performances and special tributes.</p>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+            </div>
+
+            <!-- News Card 5 -->
+            <div class="news-card" data-original="https://example.com/news/business-markets">
+                <img src="https://via.placeholder.com/400x200/00f2fe/ffffff?text=Business+News" alt="Business News" class="news-image">
+                <div class="news-content">
+                    <h2 class="news-headline">Stock Markets Reach New Heights</h2>
+                    <p class="news-description">Financial markets continue upward trend as investors show confidence in economic recovery and future growth.</p>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+            </div>
+
+            <!-- News Card 6 -->
+            <div class="news-card" data-original="https://example.com/news/health-discovery">
+                <img src="https://via.placeholder.com/400x200/43e97b/ffffff?text=Health+News" alt="Health News" class="news-image">
+                <div class="news-content">
+                    <h2 class="news-headline">New Medical Discovery Offers Hope</h2>
+                    <p class="news-description">Researchers announce promising new treatment that could benefit millions of patients worldwide.</p>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 YourNewsWorld. All rights reserved.</p>
+        <p>Your trusted source for global news and updates</p>
+    </footer>
+
+    <script>
+        // MONETAG CONFIGURATION
+        // Replace this URL with your actual Monetag direct link
+        const MONETAG_URL = 'https://otieu.com/4/10338142';
+
+        // Click counter storage for each clickable element
+        // We'll track clicks using a Map where key is element index
+        const clickCounters = new Map();
+
+        /**
+         * Handle click events with Monetag behavior
+         * First click: Open Monetag link in new tab
+         * Second click: Open original content link in new tab
+         */
+        function handleMonetagClick(event, element, originalUrl, elementId) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            // Get current click count for this element (default to 0)
+            const currentCount = clickCounters.get(elementId) || 0;
+
+            // Determine which link to open based on click count
+            if (currentCount === 0) {
+                // First click - open Monetag link
+                window.open(MONETAG_URL, '_blank');
+                // Increment counter
+                clickCounters.set(elementId, 1);
+            } else {
+                // Second click - open original news link and reset counter
+                window.open(originalUrl, '_blank');
+                // Reset counter to 0 so next click opens Monetag again
+                clickCounters.set(elementId, 0);
+            }
+        }
+
+        // Initialize all navigation links with Monetag behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle navigation bar links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach((link, index) => {
+                const originalUrl = link.getAttribute('data-original');
+                const elementId = 'nav-' + index;
+                
+                link.addEventListener('click', function(event) {
+                    handleMonetagClick(event, link, originalUrl, elementId);
+                });
+            });
+
+            // Handle news cards (entire card is clickable)
+            const newsCards = document.querySelectorAll('.news-card');
+            newsCards.forEach((card, index) => {
+                const originalUrl = card.getAttribute('data-original');
+                const elementId = 'card-' + index;
+                
+                card.addEventListener('click', function(event) {
+                    // Don't trigger if clicking the button directly (button has its own handler)
+                    if (event.target.classList.contains('read-more-btn')) {
+                        return;
+                    }
+                    handleMonetagClick(event, card, originalUrl, elementId);
+                });
+            });
+
+            // Handle Read More buttons separately
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+            readMoreButtons.forEach((button, index) => {
+                const card = button.closest('.news-card');
+                const originalUrl = card.getAttribute('data-original');
+                const elementId = 'btn-' + index;
+                
+                button.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent card click from firing
+                    handleMonetagClick(event, button, originalUrl, elementId);
+                });
+            });
+
+            // Add visual feedback for better UX
+            console.log('YourNewsWorld initialized with Monetag integration');
+            console.log('First click: Opens Monetag link');
+            console.log('Second click: Opens news article');
+        });
+
+        // Optional: Add smooth scroll behavior for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
